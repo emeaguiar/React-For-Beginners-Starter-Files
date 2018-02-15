@@ -6,10 +6,9 @@ class Order extends React.Component {
 	constructor() {
 		super();
 
-		this.renderOrder = this.renderOrder.bind( this );
 	}
 
-	renderOrder( key ) {
+	renderOrder = ( key ) => {
 		const fish = this.props.fishes[ key ],
 			  count = this.props.order[ key ],
 			  removeButton = <button onClick={ () => this.props.removeFromOrder( key ) }>&times;</button>;
