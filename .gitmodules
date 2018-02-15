@@ -1,0 +1,3 @@
+[submodule "catch-of-the-day/build"]
+	path = catch-of-the-day/build
+	url = git@github.com:emeaguiar/getting-fishy.git
