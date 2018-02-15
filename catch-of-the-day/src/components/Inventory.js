@@ -2,7 +2,13 @@ import React from 'react';
 import AddFishForm from './AddFishForm';
 import base from '../base';
 
+/**
+ * Inventory forms
+ */
 class Inventory extends React.Component {
+	/**
+	 * Init state
+	 */
 	constructor() {
 		super();
 
@@ -12,6 +18,9 @@ class Inventory extends React.Component {
 		};
 	}
 
+	/**
+	 * Place login buttons.
+	 */
 	componentDidMount() {
 		base.onAuth( ( user ) => {
 			if ( user ) {
@@ -20,6 +29,9 @@ class Inventory extends React.Component {
 		} );
 	}
 
+	/**
+	 * Prepara data from form in order ot update fish
+	 */
 	handleChange = ( event, key ) => {
 		const fish = this.props.fishes[ key ];
 		// take a copy of that fish and update with the new data
@@ -31,16 +43,26 @@ class Inventory extends React.Component {
 		this.props.updateFish( key, updatedFish );
 	};
 
+	/**
+	 * Use firebase to authenticate user
+	 */
 	authenticate = ( provider ) => {
 		console.log( `Trying to authenticate with ${ provider }` );
 		base.authWithOAuthPopup( provider, this.authHandler );
 	};
 
+	/**
+	 * Use firebase to logout user
+	 */
 	logout = () => {
 		base.unauth();
 		this.setState( { uid: null } );
 	}
 
+	/**
+	 * If user is logged in make sure is the owner of the store.
+	 * If there's no owner, assign to current user
+	 */
 	authHandler = ( err, authData ) => {
 		console.log(authData);
 		if ( err ) {
@@ -69,6 +91,9 @@ class Inventory extends React.Component {
 		} );
 	};
 
+	/**
+	 * Login page marjup
+	 */
 	renderLogin = () => {
 		return (
 			<nav className="login">
@@ -81,6 +106,9 @@ class Inventory extends React.Component {
 		)
 	};
 
+	/**
+	 * Inventory forms
+	 */
 	renderInventory = ( key ) => {
 		const fish = this.props.fishes[ key ]
 		return (
@@ -98,6 +126,9 @@ class Inventory extends React.Component {
 		)
 	};
 
+	/**
+	 * Render component
+	 */
 	render() {
 		const logOut = <button onClick={ this.logout }>Log Out</button>;
 

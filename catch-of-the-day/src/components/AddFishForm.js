@@ -1,6 +1,13 @@
 import React from 'react';
 
+/**
+ * Form to manually add fish to the menu
+ */
 class AddFishForm extends React.Component {
+	/**
+	 * Create a fish object with form data
+	 * @param {*} event 
+	 */
 	createFish( event ) {
 		event.preventDefault();
 
@@ -16,6 +23,9 @@ class AddFishForm extends React.Component {
 		this.fishForm.reset();
 	}
 
+	/**
+	 * Render form
+	 */
 	render() {
 		return (
 			<form ref={ ( input ) => this.fishForm = input } className="fish-edit" onSubmit={ this.createFish.bind( this ) }>

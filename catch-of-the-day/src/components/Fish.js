@@ -1,7 +1,13 @@
 import React from 'react';
 import { formatPrice } from '../helpers';
 
+/**
+ * Fish component
+ */
 class Fish extends React.Component {
+	/**
+	 * Render fish data in menu
+	 */
 	render() {
 		// Deconstruct data, this equals
 		// details = this.props.details
