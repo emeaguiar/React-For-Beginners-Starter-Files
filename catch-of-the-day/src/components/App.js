@@ -12,13 +12,6 @@ class App extends React.Component {
 	constructor() {
 		super();
 
-		this.addFish     = this.addFish.bind( this );
-		this.updateFish     = this.updateFish.bind( this );
-		this.removeFish     = this.removeFish.bind( this );
-		this.removeFromOrder     = this.removeFromOrder.bind( this );
-		this.loadSamples = this.loadSamples.bind( this );
-		this.addToOrder = this.addToOrder.bind( this );
-
 		// Initial State.
 		this.state = {
 			fishes: {},
@@ -52,7 +45,7 @@ class App extends React.Component {
 		localStorage.setItem( `order-${ this.props.params.storeId}`, JSON.stringify( nextState.order ) );
 	}
 
-	addFish( fish ) {
+	addFish = ( fish ) => {
 		// Update state
 		const fishes = {...this.state.fishes};
 		// Add in our new fish
@@ -60,43 +53,43 @@ class App extends React.Component {
 		fishes[ `fish-${ timestamp }` ] = fish;
 		// Set state
 		this.setState( { fishes } );
-	}
+	};
 
-	updateFish( key, updatedFish ) {
+	updateFish = ( key, updatedFish ) => {
 		const fishes = { ...this.state.fishes };
 		fishes[ key ] = updatedFish;
 		this.setState( { fishes } );
-	}
+	};
 
-	removeFish( key ) {
+	removeFish = ( key ) => {
 		const fishes = { ...this.state.fishes };
 		// Doesn't work with firebase, needs a workaround.
 		// delete fishes[ key ]
 
 		fishes[ key ] = null;
 		this.setState( { fishes } );
-	}
+	};
 
-	removeFromOrder( key ) {
+	removeFromOrder = ( key ) => {
 		const order = { ...this.state.order };
 		delete order[ key ];
 		this.setState( { order } );
-	}
+	};
 
-	loadSamples() {
+	loadSamples = () => {
 		this.setState( {
 			fishes: sampleFishes
 		} );
-	}
+	};
 
-	addToOrder( key ) {
+	addToOrder = ( key ) => {
 		// Take a copy of our state
 		const order = { ...this.state.order };
 		// Update or add new number of fish ordered
 		order[ key ] = order[ key ] + 1 || 1;
 		// Update our state.
 		this.setState( { order } );
-	}
+	};
 
 	render() {
 		return (
@@ -127,10 +120,10 @@ class App extends React.Component {
 			</div>
 		);
 	}
-}
 
-App.propTypes = {
-	params: React.PropTypes.object.isRequired
+	static propTypes = {
+		params: React.PropTypes.object.isRequired
+	}
 }
 
 export default App;
