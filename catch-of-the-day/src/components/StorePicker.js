@@ -2,13 +2,7 @@ import React from 'react';
 import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
-	/* constructor() {
-		super();
-
-		this.goToStore = this.goToStore.bind( this );
-	} */
-
-	goToStore( event ) {
+	goToStore = ( event ) => {
 		event.preventDefault();
 		console.log( 'URL changed' );
 		// First grab the text from the box
@@ -16,11 +10,11 @@ class StorePicker extends React.Component {
 		console.log(`Going to ${ storeId }`);
 		// Transition  from / to /store/:storeId
 		this.context.router.transitionTo( `/store/${ storeId }` );
-	}
+	};
 	
 	render() {
 		return (
-			<form className="store-selector" onSubmit={ this.goToStore.bind( this ) }>
+			<form className="store-selector" onSubmit={ this.goToStore }>
 				{/* hello */}
 				<h2>Please Enter a Store</h2>
 				<input type="text" placeholder="Store Name" defaultValue={ getFunName() } ref={ ( input ) => { this.storeInput = input } } />
