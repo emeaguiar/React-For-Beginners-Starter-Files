@@ -1,7 +1,14 @@
 import React from 'react';
 import { getFunName } from '../helpers';
 
+/**
+ * Store picker
+ * aka homepage
+ */
 class StorePicker extends React.Component {
+	/**
+	 * Update route with store's name
+	 */
 	goToStore = ( event ) => {
 		event.preventDefault();
 		console.log( 'URL changed' );
@@ -12,6 +19,9 @@ class StorePicker extends React.Component {
 		this.context.router.transitionTo( `/store/${ storeId }` );
 	};
 	
+	/**
+	 * Render component
+	 */
 	render() {
 		return (
 			<form className="store-selector" onSubmit={ this.goToStore }>

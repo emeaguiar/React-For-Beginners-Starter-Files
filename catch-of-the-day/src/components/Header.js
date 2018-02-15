@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Header Markup
+ * @param {*} props 
+ */
 const Header = ( props ) => {
 	return (
 		<header className="top">

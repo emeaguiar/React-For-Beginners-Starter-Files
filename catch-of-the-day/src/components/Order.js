@@ -2,12 +2,13 @@ import React from 'react';
 import { formatPrice } from '../helpers';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
+/**
+ * Current order
+ */
 class Order extends React.Component {
-	constructor() {
-		super();
-
-	}
-
+	/**
+	 * If fish available display total price of selection
+	 */
 	renderOrder = ( key ) => {
 		const fish = this.props.fishes[ key ],
 			  count = this.props.order[ key ],
@@ -25,6 +26,9 @@ class Order extends React.Component {
 		);
 	}
 
+	/**
+	 * Render component
+	 */
 	render() {
 		const orderIds = Object.keys( this.props.order ),
 			  total = orderIds.reduce( ( prevTotal, key ) => {
